@@ -4,20 +4,6 @@ provider "aws" {
   secret_key = "my-secret-key"
 }
 
-resource "aws_vpc" "my-vpc" {
-  cidr_block = "10.0.0.0/16"
-
-  tags = {
-    Name = "my-vpc"
-  }
-}
-
-resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.my-vpc.id
-
-}
-
-
 resource "aws_instance" "vm" {
   ami           = "ami-0e472ba40eb589f49"
   instance_type = "t2.micro"
